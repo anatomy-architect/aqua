@@ -1,0 +1,220 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Local / CI: SQLite (no Docker required).
+// Production: copy prisma/schema.postgresql.prisma and set DATABASE_URL to Postgres.
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   Int      @id @default(autoincrement())
+  fullName             String
+  email                String   @unique
+  passwordHash         String
+  role                 String   @default("user")
+  status               String   @default("active")
+  referralCode         String   @unique
+  referredById         Int?
+  referredBy           User?    @relation("Referrals", fields: [referredById], references: [id])
+  referrals            User[]   @relation("Referrals")
+  availableBalance     String   @default("0.00")
+  heldBalance          String   @default("0.00")
+  totalDeposited       String   @default("0.00")
+  totalPaidOut         String   @default("0.00")
+  totalEarned          String   @default("0.00")
+  totalReferralEarned  String   @default("0.00")
+  bep20Address         String?
+  termsAcceptedAt      DateTime?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  investments          Investment[]
+  deposits             Deposit[]
+  payouts              Payout[]
+  earnings             EarningRecord[]
+  commissionsReceived  ReferralCommission[] @relation("CommissionReferrer")
+  commissionsGenerated ReferralCommission[] @relation("CommissionInvestor")
+  ledger               LedgerEntry[]
+  notifications        Notification[]
+  auditLogs            AuditLog[]
+  revokedTokens        RevokedToken[]
+
+  @@index([referredById])
+}
+
+model Plan {
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  tier          String
+  minDeposit    String
+  maxDeposit    String
+  dailyRoi      String
+  durationDays  Int
+  payoutFee     String
+  description   String
+  speedRpm      Int      @default(120)
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  investments   Investment[]
+  deposits      Deposit[]
+}
+
+model Investment {
+  id                    Int      @id @default(autoincrement())
+  userId                Int
+  user                  User     @relation(fields: [userId], references: [id])
+  planId                Int
+  plan                  Plan     @relation(fields: [planId], references: [id])
+  depositId             Int?     @unique
+  deposit               Deposit? @relation(fields: [depositId], references: [id])
+  planNameSnapshot      String
+  investedAmount        String
+  dailyRateSnapshot     String
+  durationDaysSnapshot  Int
+  payoutFeeSnapshot     String
+  dailyEarnings         String
+  totalEarned           String   @default("0.00")
+  daysPassed            Int      @default(0)
+  startDate             DateTime @default(now())
+  endDate               DateTime
+  lastEarningDate       DateTime?
+  status                String   @default("active")
+  createdAt             DateTime @default(now())
+  earnings              EarningRecord[]
+  commissions           ReferralCommission[]
+
+  @@index([userId, status])
+}
+
+model EarningRecord {
+  id            Int      @id @default(autoincrement())
+  investmentId  Int
+  investment    Investment @relation(fields: [investmentId], references: [id])
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  earningDay    Int
+  amount        String
+  creditedAt    DateTime @default(now())
+
+  @@unique([investmentId, earningDay])
+}
+
+model ReferralCommission {
+  id              Int      @id @default(autoincrement())
+  investmentId    Int
+  investment      Investment @relation(fields: [investmentId], references: [id])
+  referredUserId  Int
+  referredUser    User     @relation("CommissionInvestor", fields: [referredUserId], references: [id])
+  referrerId      Int
+  referrer        User     @relation("CommissionReferrer", fields: [referrerId], references: [id])
+  level           Int
+  ratePercent     String
+  maxDays         Int
+  earningDay      Int
+  amount          String
+  creditedAt      DateTime @default(now())
+
+  @@unique([investmentId, referrerId, level, earningDay])
+}
+
+model Deposit {
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  user              User     @relation(fields: [userId], references: [id])
+  planId            Int?
+  plan              Plan?    @relation(fields: [planId], references: [id])
+  amount            String
+  network           String   @default("BEP20")
+  receivingAddress  String
+  txHash            String   @unique
+  status            String   @default("PENDING")
+  submittedAt       DateTime @default(now())
+  reviewedAt        DateTime?
+  adminId           Int?
+  adminNote         String?
+  investment        Investment?
+
+  @@index([userId, status])
+}
+
+// Historical domain was "withdrawals". New store uses payouts.
+model Payout {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id])
+  amount         String
+  feeRate        String
+  feeAmount      String
+  netAmount      String
+  walletAddress  String
+  network        String   @default("BEP20")
+  status         String   @default("SUBMITTED")
+  submittedAt    DateTime @default(now())
+  processedAt    DateTime?
+  txHash         String?
+  adminId        Int?
+  adminNote      String?
+  holdReleased   Boolean  @default(false)
+  completed      Boolean  @default(false)
+
+  @@index([userId, status])
+}
+
+model LedgerEntry {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  type          String
+  amount        String
+  direction     String
+  referenceType String?
+  referenceId   Int?
+  balanceAfter  String
+  earningDay    Int?
+  note          String?
+  createdAt     DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model AuditLog {
+  id         Int      @id @default(autoincrement())
+  actorId    Int
+  actor      User     @relation(fields: [actorId], references: [id])
+  actorEmail String
+  action     String
+  targetType String
+  targetId   String?
+  details    String?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  title     String
+  body      String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model RevokedToken {
+  id        Int      @id @default(autoincrement())
+  jti       String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}

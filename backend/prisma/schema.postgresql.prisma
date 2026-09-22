@@ -1,0 +1,227 @@
+// Production PostgreSQL schema (Decimal financial fields).
+// Usage:
+//   1. Set DATABASE_URL=postgresql://USER:PASS@HOST:5432/aquavault?schema=public
+//   2. Copy this file over prisma/schema.prisma OR:
+//      npx prisma generate --schema prisma/schema.postgresql.prisma
+//   3. npx prisma migrate deploy --schema prisma/schema.postgresql.prisma
+//
+// Field names match the SQLite schema so application code stays identical;
+// amounts are Decimal(18,8) instead of String.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   Int      @id @default(autoincrement())
+  fullName             String
+  email                String   @unique
+  passwordHash         String
+  role                 String   @default("user")
+  status               String   @default("active")
+  referralCode         String   @unique
+  referredById         Int?
+  referredBy           User?    @relation("Referrals", fields: [referredById], references: [id])
+  referrals            User[]   @relation("Referrals")
+  availableBalance     Decimal  @default(0.00) @db.Decimal(18, 8)
+  heldBalance          Decimal  @default(0.00) @db.Decimal(18, 8)
+  totalDeposited       Decimal  @default(0.00) @db.Decimal(18, 8)
+  totalPaidOut         Decimal  @default(0.00) @db.Decimal(18, 8)
+  totalEarned          Decimal  @default(0.00) @db.Decimal(18, 8)
+  totalReferralEarned  Decimal  @default(0.00) @db.Decimal(18, 8)
+  bep20Address         String?
+  termsAcceptedAt      DateTime?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  investments          Investment[]
+  deposits             Deposit[]
+  payouts              Payout[]
+  earnings             EarningRecord[]
+  commissionsReceived  ReferralCommission[] @relation("CommissionReferrer")
+  commissionsGenerated ReferralCommission[] @relation("CommissionInvestor")
+  ledger               LedgerEntry[]
+  notifications        Notification[]
+  auditLogs            AuditLog[]
+  revokedTokens        RevokedToken[]
+
+  @@index([referredById])
+}
+
+model Plan {
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  tier          String
+  minDeposit    Decimal  @db.Decimal(18, 8)
+  maxDeposit    Decimal  @db.Decimal(18, 8)
+  dailyRoi      Decimal  @db.Decimal(18, 8)
+  durationDays  Int
+  payoutFee     Decimal  @db.Decimal(18, 8)
+  description   String
+  speedRpm      Int      @default(120)
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  investments   Investment[]
+  deposits      Deposit[]
+}
+
+model Investment {
+  id                    Int      @id @default(autoincrement())
+  userId                Int
+  user                  User     @relation(fields: [userId], references: [id])
+  planId                Int
+  plan                  Plan     @relation(fields: [planId], references: [id])
+  depositId             Int?     @unique
+  deposit               Deposit? @relation(fields: [depositId], references: [id])
+  planNameSnapshot      String
+  investedAmount        Decimal  @db.Decimal(18, 8)
+  dailyRateSnapshot     Decimal  @db.Decimal(18, 8)
+  durationDaysSnapshot  Int
+  payoutFeeSnapshot     Decimal  @db.Decimal(18, 8)
+  dailyEarnings         Decimal  @db.Decimal(18, 8)
+  totalEarned           Decimal  @default(0.00) @db.Decimal(18, 8)
+  daysPassed            Int      @default(0)
+  startDate             DateTime @default(now())
+  endDate               DateTime
+  lastEarningDate       DateTime?
+  status                String   @default("active")
+  createdAt             DateTime @default(now())
+  earnings              EarningRecord[]
+  commissions           ReferralCommission[]
+
+  @@index([userId, status])
+}
+
+model EarningRecord {
+  id            Int      @id @default(autoincrement())
+  investmentId  Int
+  investment    Investment @relation(fields: [investmentId], references: [id])
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  earningDay    Int
+  amount        Decimal  @db.Decimal(18, 8)
+  creditedAt    DateTime @default(now())
+
+  @@unique([investmentId, earningDay])
+}
+
+model ReferralCommission {
+  id              Int      @id @default(autoincrement())
+  investmentId    Int
+  investment      Investment @relation(fields: [investmentId], references: [id])
+  referredUserId  Int
+  referredUser    User     @relation("CommissionInvestor", fields: [referredUserId], references: [id])
+  referrerId      Int
+  referrer        User     @relation("CommissionReferrer", fields: [referrerId], references: [id])
+  level           Int
+  ratePercent     Decimal  @db.Decimal(18, 8)
+  maxDays         Int
+  earningDay      Int
+  amount          Decimal  @db.Decimal(18, 8)
+  creditedAt      DateTime @default(now())
+
+  @@unique([investmentId, referrerId, level, earningDay])
+}
+
+model Deposit {
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  user              User     @relation(fields: [userId], references: [id])
+  planId            Int?
+  plan              Plan?    @relation(fields: [planId], references: [id])
+  amount            Decimal  @db.Decimal(18, 8)
+  network           String   @default("BEP20")
+  receivingAddress  String
+  txHash            String   @unique
+  status            String   @default("PENDING")
+  submittedAt       DateTime @default(now())
+  reviewedAt        DateTime?
+  adminId           Int?
+  adminNote         String?
+  investment        Investment?
+
+  @@index([userId, status])
+}
+
+model Payout {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id])
+  amount         Decimal  @db.Decimal(18, 8)
+  feeRate        Decimal  @db.Decimal(18, 8)
+  feeAmount      Decimal  @db.Decimal(18, 8)
+  netAmount      Decimal  @db.Decimal(18, 8)
+  walletAddress  String
+  network        String   @default("BEP20")
+  status         String   @default("SUBMITTED")
+  submittedAt    DateTime @default(now())
+  processedAt    DateTime?
+  txHash         String?
+  adminId        Int?
+  adminNote      String?
+  holdReleased   Boolean  @default(false)
+  completed      Boolean  @default(false)
+
+  @@index([userId, status])
+}
+
+model LedgerEntry {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  type          String
+  amount        Decimal  @db.Decimal(18, 8)
+  direction     String
+  referenceType String?
+  referenceId   Int?
+  balanceAfter  Decimal  @db.Decimal(18, 8)
+  earningDay    Int?
+  note          String?
+  createdAt     DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model AuditLog {
+  id         Int      @id @default(autoincrement())
+  actorId    Int
+  actor      User     @relation(fields: [actorId], references: [id])
+  actorEmail String
+  action     String
+  targetType String
+  targetId   String?
+  details    String?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  title     String
+  body      String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model RevokedToken {
+  id        Int      @id @default(autoincrement())
+  jti       String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
