@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aquavault
+      POSTGRES_PASSWORD: change-this-password
+      POSTGRES_DB: aquavault
+    ports:
+      - "5432:5432"
+    volumes:
+      - aquavault_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aquavault"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  aquavault_pg:
