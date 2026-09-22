@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'surface-container': '#191d3b', 'primary-container': '#00e5ff', 'tertiary-fixed-dim': '#00e475', 'on-primary-container': '#00626e', 'on-tertiary-fixed': '#00210b', 'on-secondary-fixed-variant': '#544600', 'secondary-fixed': '#ffe16d', 'surface-variant': '#2e3351', 'secondary-fixed-dim': '#e9c400', 'on-secondary': '#3a3000', 'primary': '#c3f5ff', 'on-surface-variant': '#bac9cc', 'primary-fixed-dim': '#00daf3', 'surface-container-lowest': '#070b28', 'outline': '#849396', 'on-secondary-container': '#725f00', 'error': '#ffb4ab', 'tertiary-fixed': '#62ff96', 'tertiary': '#b1ffbf', 'on-primary-fixed': '#001f24', 'on-error-container': '#ffdad6', 'surface-bright': '#323756', 'on-error': '#690005', 'inverse-primary': '#006875', 'tertiary-container': '#22ef7e', 'on-surface': '#dee0ff', 'on-secondary-fixed': '#221b00', 'primary-fixed': '#9cf0ff', 'surface-container-high': '#232846', 'secondary-container': '#ffdb3c', 'surface': '#0c112e', 'inverse-surface': '#dee0ff', 'surface-dim': '#0c112e', 'on-background': '#dee0ff', 'surface-container-highest': '#2e3351', 'outline-variant': '#3b494c', 'surface-container-low': '#141936', 'on-tertiary-container': '#006731', 'on-primary-fixed-variant': '#004f58', 'on-primary': '#00363d', 'background': '#0c112e', 'on-tertiary': '#003918', 'error-container': '#93000a', 'secondary': '#fff9ef', 'on-tertiary-fixed-variant': '#005226', 'inverse-on-surface': '#2a2e4c', 'surface-tint': '#00daf3' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter-mobile': '1rem', 'space-2xl': '3rem', 'space-lg': '1.5rem', 'space-md': '1rem', 'space-xl': '2rem', 'margin-desktop': '2.5rem', 'margin-mobile': '1rem', 'space-2xs': '0.25rem', 'space-xs': '0.5rem', 'gutter-desktop': '1.5rem', 'space-sm': '0.75rem', 'space-3xl': '4rem' }, 'fontFamily': { 'display-lg-mobile': ['spaceGrotesk'], 'headline-md': ['spaceGrotesk'], 'caption': ['inter'], 'body-lg': ['inter'], 'label-md': ['inter'], 'headline-xl-mobile': ['spaceGrotesk'], 'body-md': ['inter'], 'telemetry-data': ['jetbrainsMono'], 'headline-lg': ['spaceGrotesk'], 'label-sm': ['jetbrainsMono'], 'headline-sm': ['spaceGrotesk'], 'body-xl': ['inter'], 'headline-xl': ['spaceGrotesk'], 'body-sm': ['inter'], 'display-lg': ['spaceGrotesk'] }, 'fontSize': { 'display-lg-mobile': ['36px', { 'lineHeight': '44px', 'letterSpacing': '-0.01em', 'fontWeight': '700' }], 'headline-md': ['22px', { 'lineHeight': '28px', 'letterSpacing': '0em', 'fontWeight': '600' }], 'caption': ['10px', { 'lineHeight': '12px', 'letterSpacing': '0.06em', 'fontWeight': '500' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'letterSpacing': '0em', 'fontWeight': '400' }], 'label-md': ['13px', { 'lineHeight': '16px', 'letterSpacing': '0.04em', 'fontWeight': '600' }], 'headline-xl-mobile': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '700' }], 'body-md': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0em', 'fontWeight': '400' }], 'telemetry-data': ['15px', { 'lineHeight': '20px', 'letterSpacing': '0.02em', 'fontWeight': '500' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'label-sm': ['11px', { 'lineHeight': '14px', 'letterSpacing': '0.08em', 'fontWeight': '500' }], 'headline-sm': ['18px', { 'lineHeight': '24px', 'letterSpacing': '0.01em', 'fontWeight': '600' }], 'body-xl': ['18px', { 'lineHeight': '28px', 'letterSpacing': '0em', 'fontWeight': '400' }], 'headline-xl': ['40px', { 'lineHeight': '48px', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'body-sm': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.01em', 'fontWeight': '400' }], 'display-lg': ['56px', { 'lineHeight': '64px', 'letterSpacing': '-0.02em', 'fontWeight': '700' }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div class="h-20 w-full px-margin-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><div class="flex items-center gap-space-sm shrink-0"><img alt="Aqua Vault Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wv9H9jYGkUwn_8xLXyHFHZ7aJtHKCfAAuXbw43Z1WXyMd7y1EIWM7whqZLuod4QcEs13U9TKd4ZD_W__TGVF1DrRIVqtoxft9nnH0xc988XZIYz2gyQwHqQ1iHbh0-B6jECHG5U6_UeKEYeJKrh6qwZws1Vj9sK4dE9tLEzeoyIrXyr00AarT6NEXqFt5ceawrRDz_GwhlsY9qQ8xxZw3NLnorKXqGE205J7XOOdjxhQyRl2FoP8o5UyMg"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold leading-none">AQUA VAULT</span><span class="font-label-sm text-caption text-primary-fixed-dim tracking-widest uppercase mt-0.5">Clean Hydro DeFi</span></div></div><nav class="hidden xl:flex items-center gap-space-md" data-active-classes="text-primary-container font-label-md bg-surface-container-high px-3 py-1.5 rounded-lg"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="overview-and-dashboard" href="#">Overview &amp; Dashboard</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="hydro-turbines" href="#">Hydro Turbines (Plans)</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="deposit" href="#">Deposit (USDT BEP20)</a><a aria-current="page" class="transition-colors text-primary-container font-label-md bg-surface-container-high px-3 py-1.5 rounded-lg" data-path="withdrawals" href="#">Withdrawals</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="team-and-affiliates" href="#">Team &amp; Affiliates</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="admin-terminal" href="#">Admin Terminal</a></nav></div><div class="flex items-center gap-space-sm"><div class="hidden md:flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-secondary-fixed shadow-[0_0_8px_rgba(255,225,109,0.8)] animate-pulse"></span><span class="font-label-sm text-label-sm text-secondary-fixed font-bold tracking-wider">BNB CHAIN</span><span class="font-caption text-caption text-on-surface-variant uppercase">(BEP20)</span></div><div class="hidden sm:flex items-center gap-space-xs bg-surface-container-high px-space-sm py-1.5 rounded-full"><span class="font-label-sm text-caption text-on-surface-variant uppercase tracking-wider">Liquidity:</span><span class="font-telemetry-data text-telemetry-data text-primary-container font-semibold">$1,420.50</span><span class="font-label-sm text-caption text-primary-fixed">USDT</span></div><div class="flex items-center pl-space-xs"><div class="p-0.5 rounded-full bg-surface-variant ring-1 ring-primary-container/30"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBEKYxTlB6Q5RYoH_FaTYrSWsGgZ7cLuxkGLptP7Q5Au4TnEpb6WhSyy8sVWcgNYbsjzijvnkFe-tY7LgJeX1RJ2cT36aJtxccD9tNWC5aKN6-F3KQU6MaAqPCp-1mW2P8DKkHROKQppEtcazRNNOzffldLfvv9FwEA0Ipgv9nw8NW1lrOlkrsesWJfNgJmmq92mFz7aO05mqnYoS9DVH8V4-iQYXzwQiGtaKpswEKOtN7UurdDK51hw"/></div></div></div></div></header><main class="w-full pt-20 bg-background min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Oceanic Gradients -->
+<div class="relative w-full overflow-hidden px-margin-desktop py-space-xl">
+<div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute top-20 right-0 w-[30rem] h-[30rem] rounded-full bg-surface-variant/40 blur-3xl pointer-events-none"></div>
+<!-- Page Context / Overline Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-2xl">
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-md"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-widest">BEP20 Cold Liquidity Tunnel</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">Manual Withdrawal Terminal</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Initiate manual treasury-cleared BEP20 withdrawals. All disbursements undergo algorithmic cold-storage checksum validation and multi-signature auditing.
+        </p>
+</div>
+<!-- Turnaround Advisory Pill -->
+<div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-space-sm rounded-xl shadow-lg">
+<div class="p-2 rounded-lg bg-surface-variant text-primary-container">
+<span class="material-symbols-outlined text-lg">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-caption text-on-surface-variant uppercase tracking-wider">Verification SLA</span>
+<span class="font-telemetry-data text-body-sm text-on-surface font-semibold">12–18 Hours Manual Review</span>
+</div>
+</div>
+</div>
+<!-- 1. TOP BALANCE METRIC PODS (Bento Strip) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg mb-space-2xl">
+<!-- Available Balance -->
+<div class="relative overflow-hidden bg-surface-container/70 backdrop-blur-md p-space-lg rounded-xl shadow-xl flex flex-col justify-between group">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Available for Withdrawal</span>
+<span class="material-symbols-outlined text-primary-container">account_balance_wallet</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-secondary font-bold font-display-lg" id="stat-available">1,420.50</span>
+<span class="font-label-md text-label-md text-primary-container font-semibold">USDT</span>
+</div>
+<div class="flex items-center gap-space-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed"></span>
+<span class="font-caption text-caption text-tertiary-fixed font-medium">Unlocked Liquidity Layer</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-primary-container h-full w-[72%]"></div>
+</div>
+</div>
+<!-- Funds on Temporary Security Hold -->
+<div class="relative overflow-hidden bg-surface-container/70 backdrop-blur-md p-space-lg rounded-xl shadow-xl flex flex-col justify-between group">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Funds on Security Hold</span>
+<span class="material-symbols-outlined text-secondary-fixed">shield_lock</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold font-display-lg">0.00</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">USDT</span>
+</div>
+<div class="flex items-center gap-space-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+<span class="font-caption text-caption text-secondary-fixed font-medium">0 active queue barriers</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-secondary-fixed h-full w-0"></div>
+</div>
+</div>
+<!-- Lifetime Withdrawn -->
+<div class="relative overflow-hidden bg-surface-container/70 backdrop-blur-md p-space-lg rounded-xl shadow-xl flex flex-col justify-between group">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Lifetime Disbursed</span>
+<span class="material-symbols-outlined text-tertiary-container">verified</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-secondary font-bold font-display-lg">3,850.00</span>
+<span class="font-label-md text-label-md text-primary-container font-semibold">USDT</span>
+</div>
+<div class="flex items-center gap-space-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">8 Completed BSC Broadcasts</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full w-full"></div>
+</div>
+</div>
+</div>
+<!-- MAIN TWO-COLUMN WORKFLOW: REQUEST GLASS CARD + FEE/METRICS RADAR -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start mb-space-3xl">
+<!-- LEFT: Withdrawal Request Glass Form (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container/80 backdrop-blur-xl p-space-xl rounded-xl shadow-2xl flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-variant flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">outbox</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold leading-tight">Request Disbursement</h2>
+<span class="font-label-sm text-caption text-on-surface-variant uppercase tracking-wider">Protocol BEP20 Output Port</span>
+</div>
+</div>
+<span class="bg-surface-variant px-2.5 py-1 rounded-full font-label-sm text-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">BNB Chain</span>
+</div>
+<form class="flex flex-col gap-space-md" id="withdrawal-form" onsubmit="event.preventDefault(); submitDisbursement();">
+<!-- Source Turbine Tier Context Selector -->
+<div class="flex flex-col gap-space-2xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider flex justify-between">
+<span>Source Yield Turbine Tier</span>
+<span class="text-primary-container font-semibold">Fee Profile Target</span>
+</label>
+<div class="grid grid-cols-3 sm:grid-cols-5 gap-space-xs">
+<button class="tier-pill bg-surface-variant text-on-surface-variant hover:text-on-surface px-space-xs py-2 rounded-lg text-center flex flex-col items-center gap-1 transition-all" onclick="setTier('coral', 10, this)" type="button">
+<span class="font-label-sm text-caption font-bold">Coral</span>
+<span class="font-label-sm text-[10px] text-error">10% Fee</span>
+</button>
+<button class="tier-pill bg-surface-variant text-on-surface-variant hover:text-on-surface px-space-xs py-2 rounded-lg text-center flex flex-col items-center gap-1 transition-all" onclick="setTier('deep', 6, this)" type="button">
+<span class="font-label-sm text-caption font-bold">Deep</span>
+<span class="font-label-sm text-[10px] text-secondary-fixed">6% Fee</span>
+</button>
+<button class="tier-pill bg-surface-variant text-on-surface-variant hover:text-on-surface px-space-xs py-2 rounded-lg text-center flex flex-col items-center gap-1 transition-all" onclick="setTier('pulse', 4, this)" type="button">
+<span class="font-label-sm text-caption font-bold">Pulse</span>
+<span class="font-label-sm text-[10px] text-secondary-fixed">4% Fee</span>
+</button>
+<button class="tier-pill active bg-primary-container text-on-primary-container px-space-xs py-2 rounded-lg text-center flex flex-col items-center gap-1 transition-all shadow-md" onclick="setTier('abyss', 0, this)" type="button">
+<span class="font-label-sm text-caption font-bold">Abyss</span>
+<span class="font-label-sm text-[10px] font-bold">0% VIP</span>
+</button>
+<button class="tier-pill bg-surface-variant text-on-surface-variant hover:text-on-surface px-space-xs py-2 rounded-lg text-center flex flex-col items-center gap-1 transition-all" onclick="setTier('titan', 0, this)" type="button">
+<span class="font-label-sm text-caption font-bold">Titan</span>
+<span class="font-label-sm text-[10px] text-tertiary-fixed font-bold">0% VIP</span>
+</button>
+</div>
+</div>
+<!-- BEP20 Wallet Address -->
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="bep20-address">Destination BEP20 Address</label>
+<span class="font-label-sm text-caption text-primary-fixed-dim uppercase tracking-wider">BSC Checksum Enforced</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest text-secondary placeholder-outline font-telemetry-data text-body-md px-space-md py-3 rounded-lg shadow-inner focus:outline-none focus:bg-surface-container-high transition-colors" id="bep20-address" placeholder="0x..." required="" type="text" value="0x71C...a49B"/>
+<button class="absolute right-3 top-2.5 px-2 py-1 rounded bg-surface-variant font-label-sm text-caption text-primary-container hover:bg-surface-bright transition-colors" onclick="pasteAddress()" type="button">
+                PASTE
+              </button>
+</div>
+<p class="font-caption text-caption text-outline">Verify destination contract or wallet. Cross-chain bridge transfers to EVM incompatible subnets will result in permanent capital forfeiture.</p>
+</div>
+<!-- Withdrawal Amount Input -->
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="withdraw-amount">Amount (Min: $20.00 USDT)</label>
+<span class="font-label-sm text-caption text-on-surface-variant">Available: <button class="text-primary-container hover:underline font-bold" onclick="setMax()" type="button">1,420.50 USDT</button></span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest text-secondary font-telemetry-data text-headline-sm px-space-md py-3 rounded-lg shadow-inner focus:outline-none focus:bg-surface-container-high transition-colors" id="withdraw-amount" max="1420.50" min="20" oninput="recalculateFee()" required="" step="0.01" type="number" value="500.00"/>
+<span class="absolute right-4 font-telemetry-data text-body-sm text-primary-fixed-dim font-bold">USDT</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<button class="bg-surface-variant hover:bg-surface-bright px-3 py-1 rounded font-label-sm text-caption text-on-surface transition-colors" onclick="setQuickAmount(100)" type="button">$100</button>
+<button class="bg-surface-variant hover:bg-surface-bright px-3 py-1 rounded font-label-sm text-caption text-on-surface transition-colors" onclick="setQuickAmount(250)" type="button">$250</button>
+<button class="bg-surface-variant hover:bg-surface-bright px-3 py-1 rounded font-label-sm text-caption text-on-surface transition-colors" onclick="setQuickAmount(500)" type="button">$500</button>
+<button class="bg-surface-variant hover:bg-surface-bright px-3 py-1 rounded font-label-sm text-caption text-on-surface transition-colors" onclick="setQuickAmount(1000)" type="button">$1,000</button>
+<button class="bg-surface-variant hover:bg-surface-bright px-3 py-1 rounded font-label-sm text-caption text-primary-container font-semibold transition-colors" onclick="setMax()" type="button">MAX</button>
+</div>
+</div>
+<!-- Live Fee Breakdown Container -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-xs shadow-md">
+<span class="font-label-sm text-caption text-on-surface-variant uppercase tracking-wider">Settlement Calculation Breakdown</span>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface">
+<span>Requested Gross:</span>
+<span class="font-telemetry-data text-on-surface" id="calc-requested">$500.00 USDT</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span>Turbine Network Protocol Fee</span>
+<span class="font-caption text-caption text-outline" id="fee-tier-label">(Abyss Flow 0%)</span>:
+              </span>
+<span class="font-telemetry-data text-tertiary-fixed" id="calc-fee">-$0.00 USDT</span>
+</div>
+<div class="h-0.5 bg-surface-variant my-1"></div>
+<div class="flex items-center justify-between font-headline-sm text-headline-sm font-bold">
+<span class="text-primary">Net Disbursed to BEP20:</span>
+<span class="font-telemetry-data text-primary-container" id="calc-net">$500.00 USDT</span>
+</div>
+</div>
+<!-- Security Policy Notice Card -->
+<div class="flex items-start gap-space-sm bg-surface-container-lowest p-space-md rounded-lg">
+<span class="material-symbols-outlined text-secondary-fixed shrink-0 text-xl">gavel</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-caption text-secondary-fixed font-bold uppercase tracking-wider">Treasury Governance Mandate</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                Withdrawals are held securely and audited by Aqua Vault treasury before broadcast to BNB Smart Chain. Single active pending withdrawal enforced per liquidity account.
+              </p>
+</div>
+</div>
+<!-- Confirm CTA -->
+<button class="w-full mt-space-xs bg-primary-container text-on-primary-container hover:bg-primary-fixed transition-all py-3.5 px-space-lg rounded-xl font-label-md text-headline-sm font-bold tracking-tight shadow-xl flex items-center justify-center gap-space-xs" id="submit-btn" type="submit">
+<span class="material-symbols-outlined">lock_clock</span>
+<span>Confirm &amp; Transmit BEP20 Disbursement</span>
+</button>
+</form>
+</div>
+<!-- RIGHT: Tiered Fee Matrix & Kinetic Visualizer (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Visual Sensor / Kinetic Depth Graphic -->
+<div class="relative overflow-hidden bg-surface-container/70 backdrop-blur-md p-space-lg rounded-xl shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">Cold Vault Pipeline Status</span>
+<span class="flex items-center gap-1 bg-surface-variant px-2 py-0.5 rounded text-caption font-label-sm text-tertiary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed animate-ping"></span>
+              BUFFER SYNCHRONIZED
+            </span>
+</div>
+<!-- SVG Telemetry Gauge -->
+<div class="w-full flex items-center justify-center py-space-sm">
+<div class="relative w-48 h-48 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-variant" cx="50" cy="50" fill="transparent" r="42" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary-container" cx="50" cy="50" fill="transparent" r="42" stroke="currentColor" stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute flex flex-col items-center text-center">
+<span class="font-caption text-caption text-on-surface-variant uppercase tracking-widest">Reserve Depth</span>
+<span class="font-telemetry-data text-headline-lg font-bold text-secondary">75.4%</span>
+<span class="font-label-sm text-caption text-primary-fixed-dim">BEP20 Hot/Cold Ratio</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs font-telemetry-data text-caption bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="flex flex-col">
+<span class="text-on-surface-variant">Cold Key Node:</span>
+<span class="text-secondary font-semibold">Node-9_Reykjavik</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-on-surface-variant">Audit Signature:</span>
+<span class="text-tertiary-fixed font-semibold">ED25519-HSM</span>
+</div>
+</div>
+</div>
+<!-- PRD Tiered Fee Structure Schedule Card -->
+<div class="bg-surface-container/70 backdrop-blur-md p-space-lg rounded-xl shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Tiered Fee Schedule</h3>
+<span class="material-symbols-outlined text-outline">tune</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Protocol fees scale automatically down to 0% based on active hydro-turbine plan deployment.
+          </p>
+<div class="flex flex-col gap-space-xs">
+<!-- Coral Stream -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-high rounded-lg hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Coral Stream</span>
+<span class="font-caption text-caption text-on-surface-variant">Basic Tier Hydro Generator</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-telemetry-data text-label-md text-error font-bold">10.0%</span>
+<span class="block font-caption text-caption text-outline">Deducted at source</span>
+</div>
+</div>
+<!-- Deep Current -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-high rounded-lg hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Deep Current</span>
+<span class="font-caption text-caption text-on-surface-variant">Enhanced Kinetic Array</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-telemetry-data text-label-md text-secondary-fixed font-bold">6.0%</span>
+<span class="block font-caption text-caption text-outline">Deducted at source</span>
+</div>
+</div>
+<!-- Ocean Pulse -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-high rounded-lg hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Ocean Pulse</span>
+<span class="font-caption text-caption text-on-surface-variant">Mid-tier Thermal Turbine</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-telemetry-data text-label-md text-secondary-fixed font-bold">4.0%</span>
+<span class="block font-caption text-caption text-outline">Deducted at source</span>
+</div>
+</div>
+<!-- Abyss Flow -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-semibold">Abyss Flow</span>
+<span class="font-caption text-caption text-on-surface-variant">Institutional Sub-surface Array</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-telemetry-data text-label-md text-primary-container font-bold">0.0%</span>
+<span class="block font-caption text-caption text-tertiary-fixed">Full Zero Fee VIP</span>
+</div>
+</div>
+<!-- Titan Current -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-tertiary font-semibold">Titan Current</span>
+<span class="font-caption text-caption text-on-surface-variant">Grid Anchor Multi-MW Rig</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-telemetry-data text-label-md text-tertiary-fixed font-bold">0.0%</span>
+<span class="block font-caption text-caption text-tertiary-fixed">Zero Fee Whale Class</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. WITHDRAWAL HISTORY & REAL-TIME STATUS TRACKER -->
+<div class="flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg">manage_search</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Disbursement History &amp; Status Audit</h3>
+<span class="font-label-sm text-caption text-on-surface-variant uppercase tracking-wider">Immutable on-chain execution ledger</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-caption text-on-surface-variant">Automatic Polling: 30s</span>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-variant text-primary-container transition-colors" onclick="refreshLedger()" type="button">
+<span class="material-symbols-outlined text-sm">refresh</span>
+</button>
+</div>
+</div>
+<!-- Telemetry Data Table Container -->
+<div class="w-full overflow-x-auto bg-surface-container/60 backdrop-blur-md rounded-xl shadow-2xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/80 font-label-sm text-caption text-on-surface-variant uppercase tracking-wider">
+<th class="py-space-md px-space-lg">Request ID</th>
+<th class="py-space-md px-space-md">Timestamp (UTC)</th>
+<th class="py-space-md px-space-md">Destination Address</th>
+<th class="py-space-md px-space-md text-right">Gross / Fee</th>
+<th class="py-space-md px-space-md text-right">Net Received</th>
+<th class="py-space-md px-space-lg text-right">Processing Status / Hash</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-body-sm font-body-sm" id="ledger-body">
+<!-- Row 1: Live Processing 14h SLA -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low/40">
+<td class="py-space-md px-space-lg font-telemetry-data text-secondary font-semibold">
+                #AQ-98402
+              </td>
+<td class="py-space-md px-space-md font-telemetry-data text-on-surface-variant">
+                2024-10-28 08:42:19
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5 font-telemetry-data text-on-surface">
+<span>0x71C...a49B</span>
+<span class="material-symbols-outlined text-outline text-xs cursor-pointer hover:text-primary-container" title="Copy Address">content_copy</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data">
+<span class="text-on-surface block">$500.00</span>
+<span class="text-caption text-outline block">-$0.00 (0%)</span>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data text-headline-sm font-semibold text-primary-container">
+                $500.00 USDT
+              </td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-1.5 bg-secondary-container/20 text-secondary-fixed px-3 py-1.5 rounded-full font-label-sm text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span>PROCESSING - ~14h remaining</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: Completed -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-space-md px-space-lg font-telemetry-data text-on-surface">
+                #AQ-94211
+              </td>
+<td class="py-space-md px-space-md font-telemetry-data text-on-surface-variant">
+                2024-10-21 16:15:02
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5 font-telemetry-data text-on-surface">
+<span>0x33B...f9C1</span>
+<span class="material-symbols-outlined text-outline text-xs cursor-pointer hover:text-primary-container" title="Copy Address">content_copy</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data">
+<span class="text-on-surface block">$1,200.00</span>
+<span class="text-caption text-outline block">-$72.00 (6%)</span>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data font-semibold text-tertiary-fixed">
+                $1,128.00 USDT
+              </td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-2">
+<span class="bg-tertiary-fixed-dim/20 text-tertiary-fixed px-2.5 py-1 rounded-full font-label-sm text-caption font-semibold">COMPLETED</span>
+<a class="font-telemetry-data text-caption text-primary-container hover:underline flex items-center gap-0.5" href="#">
+                    0x8a...3f1 <span class="material-symbols-outlined text-xs">north_east</span>
+</a>
+</div>
+</td>
+</tr>
+<!-- Row 3: Completed -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-space-md px-space-lg font-telemetry-data text-on-surface">
+                #AQ-89100
+              </td>
+<td class="py-space-md px-space-md font-telemetry-data text-on-surface-variant">
+                2024-10-12 11:20:44
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5 font-telemetry-data text-on-surface">
+<span>0x71C...a49B</span>
+<span class="material-symbols-outlined text-outline text-xs cursor-pointer hover:text-primary-container" title="Copy Address">content_copy</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data">
+<span class="text-on-surface block">$1,500.00</span>
+<span class="text-caption text-outline block">-$0.00 (0%)</span>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data font-semibold text-tertiary-fixed">
+                $1,500.00 USDT
+              </td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-2">
+<span class="bg-tertiary-fixed-dim/20 text-tertiary-fixed px-2.5 py-1 rounded-full font-label-sm text-caption font-semibold">COMPLETED</span>
+<a class="font-telemetry-data text-caption text-primary-container hover:underline flex items-center gap-0.5" href="#">
+                    0x1c...99d <span class="material-symbols-outlined text-xs">north_east</span>
+</a>
+</div>
+</td>
+</tr>
+<!-- Row 4: Completed -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-space-md px-space-lg font-telemetry-data text-on-surface">
+                #AQ-85012
+              </td>
+<td class="py-space-md px-space-md font-telemetry-data text-on-surface-variant">
+                2024-09-29 22:04:18
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5 font-telemetry-data text-on-surface">
+<span>0x71C...a49B</span>
+<span class="material-symbols-outlined text-outline text-xs cursor-pointer hover:text-primary-container" title="Copy Address">content_copy</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data">
+<span class="text-on-surface block">$1,150.00</span>
+<span class="text-caption text-outline block">-$0.00 (0%)</span>
+</td>
+<td class="py-space-md px-space-md text-right font-telemetry-data font-semibold text-tertiary-fixed">
+                $1,150.00 USDT
+              </td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-2">
+<span class="bg-tertiary-fixed-dim/20 text-tertiary-fixed px-2.5 py-1 rounded-full font-label-sm text-caption font-semibold">COMPLETED</span>
+<a class="font-telemetry-data text-caption text-primary-container hover:underline flex items-center gap-0.5" href="#">
+                    0xaa...e42 <span class="material-symbols-outlined text-xs">north_east</span>
+</a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- CLIENT LOGIC FOR DYNAMIC RECALCULATION & MICRO-INTERACTIONS -->
+<script>
+  let currentFeeRate = 0; // default to Abyss 0%
+  let activeTierName = 'Abyss Flow';
+  const availableBal = 1420.50;
+
+  function setTier(tier, rate, btn) {
+    currentFeeRate = rate;
+    const names = {
+      coral: 'Coral Stream',
+      deep: 'Deep Current',
+      pulse: 'Ocean Pulse',
+      abyss: 'Abyss Flow',
+      titan: 'Titan Current'
+    };
+    activeTierName = names[tier] || 'Custom';
+
+    document.querySelectorAll('.tier-pill').forEach(el => {
+      el.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-md');
+      el.classList.add('bg-surface-variant', 'text-on-surface-variant');
+    });
+
+    btn.classList.remove('bg-surface-variant', 'text-on-surface-variant');
+    btn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-md');
+
+    recalculateFee();
+  }
+
+  function setMax() {
+    const input = document.getElementById('withdraw-amount');
+    input.value = availableBal.toFixed(2);
+    recalculateFee();
+  }
+
+  function setQuickAmount(amt) {
+    const input = document.getElementById('withdraw-amount');
+    if (amt <= availableBal) {
+      input.value = amt.toFixed(2);
+      recalculateFee();
+    }
+  }
+
+  function recalculateFee() {
+    const amountInput = document.getElementById('withdraw-amount');
+    const amount = parseFloat(amountInput.value) || 0;
+
+    const feeAmount = (amount * currentFeeRate) / 100;
+    const netAmount = Math.max(0, amount - feeAmount);
+
+    document.getElementById('calc-requested').textContent = `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDT`;
+    document.getElementById('fee-tier-label').textContent = `(${activeTierName} ${currentFeeRate}%)`;
+    
+    const feeEl = document.getElementById('calc-fee');
+    if (currentFeeRate === 0) {
+      feeEl.textContent = `-$0.00 USDT`;
+      feeEl.className = 'font-telemetry-data text-tertiary-fixed';
+    } else {
+      feeEl.textContent = `-$${feeAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDT`;
+      feeEl.className = 'font-telemetry-data text-error';
+    }
+
+    document.getElementById('calc-net').textContent = `$${netAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDT`;
+  }
+
+  function pasteAddress() {
+    navigator.clipboard.readText().then(text => {
+      if (text) {
+        document.getElementById('bep20-address').value = text;
+      }
+    }).catch(() => {
+      // Fallback if clipboard API permission denied
+      document.getElementById('bep20-address').value = '0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7';
+    });
+  }
+
+  function submitDisbursement() {
+    const amount = parseFloat(document.getElementById('withdraw-amount').value);
+    const addr = document.getElementById('bep20-address').value;
+
+    if (!amount || amount < 20) {
+      alert('Minimum withdrawal requirement is 20 USDT.');
+      return;
+    }
+
+    if (amount > availableBal) {
+      alert('Requested amount exceeds current available balance.');
+      return;
+    }
+
+    if (!addr || !addr.startsWith('0x')) {
+      alert('Please enter a valid BEP20 checksum address.');
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span><span>Verifying Cold-Vault Buffer...</span>`;
+
+    setTimeout(() => {
+      alert(`Withdrawal request for $${amount.toFixed(2)} USDT registered successfully! Routing to manual treasury validation SLA (12-18h).`);
+      btn.disabled = false;
+      btn.innerHTML = `<span class="material-symbols-outlined">lock_clock</span><span>Confirm & Transmit BEP20 Disbursement</span>`;
+    }, 1200);
+  }
+
+  function refreshLedger() {
+    const row = document.querySelector('#ledger-body tr');
+    if (row) {
+      row.style.opacity = '0.4';
+      setTimeout(() => {
+        row.style.opacity = '1';
+      }, 500);
+    }
+  }
+
+  // Initialize
+  recalculateFee();
+</script></main><footer class="w-full bg-surface-container-lowest/90 backdrop-blur-md pt-space-2xl pb-space-xl mt-space-3xl"><div class="w-full px-margin-desktop"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl pb-space-xl"><div class="flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><img alt="Aqua Vault Brand Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wv9H9jYGkUwn_8xLXyHFHZ7aJtHKCfAAuXbw43Z1WXyMd7y1EIWM7whqZLuod4QcEs13U9TKd4ZD_W__TGVF1DrRIVqtoxft9nnH0xc988XZIYz2gyQwHqQ1iHbh0-B6jECHG5U6_UeKEYeJKrh6qwZws1Vj9sK4dE9tLEzeoyIrXyr00AarT6NEXqFt5ceawrRDz_GwhlsY9qQ8xxZw3NLnorKXqGE205J7XOOdjxhQyRl2FoP8o5UyMg"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">AQUA VAULT</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Institutional-grade decentralized finance infrastructure anchored in oceanic hydro-kinetic generator arrays and thermal energy grids.</p></div><div class="flex flex-col gap-space-xs"><span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Telemetry Feed</span><div class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed shadow-[0_0_6px_rgba(98,255,150,0.8)]"></span><span class="font-label-sm text-label-sm text-tertiary-fixed">All 5 Turbines Online</span></div><div class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim shadow-[0_0_6px_rgba(0,218,243,0.8)]"></span><span class="font-label-sm text-label-sm text-on-surface-variant">BEP20 Gateway: Nominal</span></div><div class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span><span class="font-telemetry-data text-caption text-on-surface-variant">Server Time: UTC SYNCED</span></div></div><div class="flex flex-col gap-space-xs"><span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Smart Proof &amp; Audits</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">Contract: 0x9fA2...384d</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">CertiK Deep-Sea Audit</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">Kinetics Verification Engine</a></div><div class="flex flex-col gap-space-xs"><span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Protocol Support</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">Institutional Desk</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">Telegram Node Alert</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">Governance Documentation</a></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><span class="font-caption text-caption text-on-surface-variant text-center md:text-left">Aqua Vault Protocol is an autonomous yield routing system. Clean hydro allocations entail technical and market risk. Verify all contract addresses prior to transaction confirmation.</span><span class="font-caption text-caption text-on-surface-variant tracking-wider uppercase shrink-0">© 2024 Aqua Vault Protocol. All telemetry reserved.</span></div></div></footer></body></html>
